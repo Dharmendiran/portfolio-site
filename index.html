@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dharmendiran E - Automation Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        overflow-x: hidden;
+        transition: background-color 0.5s, color 0.5s;
+      }
+      
+      #bg-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: var(--scrollbar-track);
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb);
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: var(--scrollbar-thumb-hover);
+      }
+
+      /* Animation for elements scrolling into view */
+      @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .fade-in-up {
+        animation: fade-in-up 0.6s ease-out forwards;
+        opacity: 0; /* Start hidden */
+      }
+      
+      .text-glow {
+        text-shadow: var(--accent-glow);
+      }
+
+      /* Thematic text colors */
+      .text-primary-color { color: var(--text-primary); }
+      .text-secondary-color { color: var(--text-secondary); }
+      .text-title-color { color: var(--text-title); }
+      
+      /* Backgrounds and Borders */
+      .bg-main { background-color: var(--bg-color); }
+      .border-main { border-color: var(--border-color); }
+      .bg-header { background-color: var(--header-bg); }
+      
+      /* Card Styling */
+      .bg-card { background-color: var(--card-bg); }
+      .hover\:bg-card-hover:hover { background-color: var(--card-bg-hover); }
+      
+      html.light .bg-card {
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+        border: 1px solid var(--border-color);
+      }
+      html.light .bg-card:hover {
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.05);
+      }
+      
+      /* Accent Color Overrides */
+      .text-accent { color: var(--accent-color); }
+      .border-accent { border-color: var(--accent-color); }
+      .border-accent-translucent { border-color: var(--accent-color-translucent); }
+      .hover\:text-accent:hover { color: var(--accent-color); }
+      .hover\:bg-accent-hover:hover { background-color: var(--accent-hover-bg); }
+      
+      .bg-accent { background-color: var(--accent-color); }
+      .hover\:bg-accent-brighter:hover { background-color: var(--accent-color); filter: brightness(1.1); }
+      .shadow-accent { box-shadow: var(--accent-shadow); }
+
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react-dom": "https://esm.sh/react-dom@^19.1.0"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="bg-animation"></div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
