@@ -104,46 +104,46 @@
       "url": "https://learn.microsoft.com/api/credentials/share/en-in/DharmendiranE-4969/735342FB7A11722?sharingId=E5DE9BD11DC499A4"
     }
   ],
-  "themeConfig": {
-    "dark": {
-      "bgColor": "#111827",
-      "textPrimary": "#E5E7EB",
-      "textSecondary": "#9CA3AF",
-      "textTitle": "#F9FAFB",
-      "borderColor": "#374151",
-      "cardBg": "rgba(31, 41, 55, 0.75)",
-      "cardBgHover": "rgba(55, 65, 81, 0.75)",
-      "accentColor": "#38BDF8",
-      "accentColorTranslucent": "rgba(56, 189, 248, 0.5)",
-      "accentGlow": "0 0 12px rgba(56, 189, 248, 0.4), 0 0 28px rgba(56, 189, 248, 0.2)",
-      "accentShadow": "0 4px 14px 0 rgba(56, 189, 248, 0.15)",
-      "accentHoverBg": "rgba(56, 189, 248, 0.1)",
-      "scrollbarTrack": "#111827",
-      "scrollbarThumb": "#374151",
-      "scrollbarThumbHover": "#9CA3AF",
-      "headerBg": "rgba(17, 24, 39, 0.85)",
-      "vantaColor": "#38BDF8",
-      "vantaBgColor": "#111827"
-    },
-    "light": {
-      "bgColor": "#FFFFFF",
-      "textPrimary": "#1F2937",
-      "textSecondary": "#4c545f",
-      "textTitle": "#111827",
-      "borderColor": "#E5E7EB",
-      "cardBg": "#FFFFFF",
-      "cardBgHover": "#F9FAFB",
-      "accentColor": "#2563EB",
-      "accentColorTranslucent": "rgba(37, 99, 235, 0.5)",
-      "accentGlow": "0 0 12px rgba(37, 99, 235, 0.2)",
-      "accentShadow": "0 4px 14px 0 rgba(37, 99, 235, 0.15)",
-      "accentHoverBg": "rgba(37, 99, 235, 0.1)",
-      "scrollbarTrack": "#F3F4F6",
-      "scrollbarThumb": "#D1D5DB",
-      "scrollbarThumbHover": "#9CA3AF",
-      "headerBg": "rgba(255, 255, 255, 0.85)",
-      "vantaColor": "#2563EB",
-      "vantaBgColor": "#FFFFFF"
-    }
+"themeConfig": {
+  "dark": {
+    "bgColor": "#0B0F19",
+    "textPrimary": "#F9FAFB",
+    "textSecondary": "#CBD5E1",
+    "textTitle": "#FFFFFF",
+    "borderColor": "#1E293B",
+    "cardBg": "rgba(24, 33, 51, 0.95)",
+    "cardBgHover": "rgba(39, 54, 77, 0.95)",
+    "accentColor": "#38BDF8",
+    "accentColorTranslucent": "rgba(56, 189, 248, 0.5)",
+    "accentGlow": "0 0 18px rgba(56, 189, 248, 0.5)",
+    "accentShadow": "0 4px 20px rgba(56, 189, 248, 0.25)",
+    "accentHoverBg": "rgba(56, 189, 248, 0.15)",
+    "scrollbarTrack": "#1E293B",
+    "scrollbarThumb": "#475569",
+    "scrollbarThumbHover": "#94A3B8",
+    "headerBg": "rgba(11, 15, 25, 0.95)",
+    "vantaColor": "0x38bdf8",
+    "vantaBgColor": "0x0b0f19"
+  },
+  "light": {
+    "bgColor": "#FFFFFF",
+    "textPrimary": "#0F172A",
+    "textSecondary": "#475569",
+    "textTitle": "#0F172A",
+    "borderColor": "#E2E8F0",
+    "cardBg": "#FFFFFF",
+    "cardBgHover": "#F8FAFC",
+    "accentColor": "#2563EB",
+    "accentColorTranslucent": "rgba(37, 99, 235, 0.5)",
+    "accentGlow": "0 0 14px rgba(37, 99, 235, 0.35)",
+    "accentShadow": "0 4px 16px rgba(37, 99, 235, 0.2)",
+    "accentHoverBg": "rgba(37, 99, 235, 0.12)",
+    "scrollbarTrack": "#E5E7EB",
+    "scrollbarThumb": "#94A3B8",
+    "scrollbarThumbHover": "#64748B",
+    "headerBg": "rgba(255, 255, 255, 0.9)",
+    "vantaColor": "0x2563eb",
+    "vantaBgColor": "0xffffff"
   }
+}
 }

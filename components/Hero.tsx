@@ -1,8 +1,5 @@
-
-
 import React from 'react';
 import { type PersonalInfo } from '../types';
-import { DownloadIcon } from './Icons';
 
 interface HeroProps {
   personalInfo: PersonalInfo;
@@ -20,26 +17,16 @@ const Hero: React.FC<HeroProps> = ({ personalInfo }) => {
         <p className="mt-6 text-lg text-secondary-color">
           {personalInfo.bio}
         </p>
-        <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+        <div className="mt-8 flex justify-center md:justify-start space-x-4">
           <a
             href="#projects"
-            className="w-full sm:w-auto px-8 py-3 text-center bg-accent text-slate-50 font-semibold rounded-lg hover:bg-accent-brighter transition-all duration-300 shadow-lg shadow-accent"
+            className="px-8 py-3 bg-accent text-slate-50 font-semibold rounded-lg hover:bg-accent-brighter transition-all duration-300 shadow-lg shadow-accent"
           >
             View My Work
           </a>
-           <a
-            href="/Dharmendiran_E_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            download
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-card text-primary-color font-semibold rounded-lg hover:bg-card-hover transition-all duration-300"
-          >
-            <DownloadIcon className="w-5 h-5 mr-2 -ml-1" />
-            Download CV
-          </a>
           <a
             href="#contact"
-            className="w-full sm:w-auto px-8 py-3 text-center bg-card text-primary-color font-semibold rounded-lg hover:bg-card-hover transition-all duration-300"
+            className="px-8 py-3 bg-card text-primary-color font-semibold rounded-lg hover:bg-card-hover transition-all duration-300"
           >
             Get In Touch
           </a>

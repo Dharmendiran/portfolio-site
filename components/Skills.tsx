@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { type SkillCategory } from '../types';
 import * as Icons from './Icons';
@@ -21,7 +20,6 @@ const iconMap: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
   Appium: Icons.AppiumIcon,
   Boto3: Icons.Boto3Icon,
   JIRA: Icons.JiraIcon,
-  Postman: Icons.PostmanIcon,
   Default: Icons.PlaceholderIcon
 };
 
