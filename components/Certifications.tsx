@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { type CertificationItem } from '../types';
 import { CertificationIcon, ExternalLinkIcon } from './Icons';

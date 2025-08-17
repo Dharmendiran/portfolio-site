@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -8,15 +9,86 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Experience from './components/Experience';
 import Certifications from './components/Certifications';
-import { type PortfolioData, type ThemeColors } from './types';
+import { type PortfolioData, type ThemeColors, type ThemeConfig, type VantaEffect } from './types';
+import ThemeCustomizer from './components/ThemeCustomizer';
+import Chatbot from './components/Chatbot';
+import { SparklesIcon } from './components/Icons';
+import BackgroundAnimation from './components/BackgroundAnimation';
 
-declare global {
-  interface Window {
-    VANTA: any;
-  }
-}
+// --- Helper functions for color manipulation ---
+const hexToRgb = (hex: string): { r: number; g: number; b: number } | null => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16),
+  } : null;
+};
 
-// Custom hook to detect when an element is in view
+const rgbToHex = (r: number, g: number, b: number): string => {
+  const toHex = (c: number) => `0${c.toString(16)}`.slice(-2);
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+};
+
+const shadeColor = (color: string, percent: number): string => {
+  const f = hexToRgb(color);
+  if (!f) return color;
+  const t = percent < 0 ? 0 : 255;
+  const p = percent < 0 ? percent * -1 : percent;
+  const R = Math.round(f.r + (t - f.r) * p);
+  const G = Math.round(f.g + (t - f.g) * p);
+  const B = Math.round(f.b + (t - f.b) * p);
+  return rgbToHex(R, G, B);
+};
+
+const hexToRgba = (hex: string, alpha: number): string => {
+  const rgb = hexToRgb(hex);
+  if (!rgb) return hex;
+  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
+};
+
+const generateDerivedColors = (mode: 'light' | 'dark', baseColors: ThemeColors): ThemeColors => {
+    const { bgColor, textPrimary, accentColor } = baseColors;
+    const rgbAccent = hexToRgb(accentColor);
+    const accentRgbString = rgbAccent ? `${rgbAccent.r}, ${rgbAccent.g}, ${rgbAccent.b}` : '100, 255, 218';
+    
+    if (mode === 'dark') {
+        return {
+            ...baseColors,
+            textSecondary: shadeColor(textPrimary, -0.3),
+            textTitle: shadeColor(textPrimary, -0.1),
+            borderColor: shadeColor(bgColor, 0.4),
+            cardBg: hexToRgba(shadeColor(bgColor, 0.15), 0.75),
+            cardBgHover: hexToRgba(shadeColor(bgColor, 0.3), 0.75),
+            accentColorTranslucent: hexToRgba(accentColor, 0.5),
+            accentGlow: `0 0 12px rgba(${accentRgbString}, 0.4), 0 0 28px rgba(${accentRgbString}, 0.2)`,
+            accentShadow: `0 4px 14px 0 rgba(${accentRgbString}, 0.15)`,
+            accentHoverBg: hexToRgba(accentColor, 0.1),
+            scrollbarTrack: bgColor,
+            scrollbarThumb: shadeColor(bgColor, 0.4),
+            scrollbarThumbHover: shadeColor(textPrimary, -0.4),
+            headerBg: hexToRgba(bgColor, 0.85),
+        };
+    } else { // light mode
+        return {
+            ...baseColors,
+            textSecondary: shadeColor(textPrimary, 0.2), 
+            textTitle: shadeColor(textPrimary, -0.3),
+            borderColor: shadeColor(bgColor, -0.1),
+            cardBg: shadeColor(bgColor, 1),
+            cardBgHover: shadeColor(bgColor, -0.05),
+            accentColorTranslucent: hexToRgba(accentColor, 0.5),
+            accentGlow: `0 0 12px rgba(${accentRgbString}, 0.2)`,
+            accentShadow: `0 4px 14px 0 rgba(${accentRgbString}, 0.15)`,
+            accentHoverBg: hexToRgba(accentColor, 0.1),
+            scrollbarTrack: shadeColor(bgColor, -0.1),
+            scrollbarThumb: shadeColor(bgColor, -0.2),
+            scrollbarThumbHover: shadeColor(bgColor, -0.4),
+            headerBg: hexToRgba(bgColor, 0.85),
+        };
+    }
+};
+
 const useInView = (options: IntersectionObserverInit) => {
   const ref = useRef<HTMLElement>(null);
   const [inView, setInView] = useState(false);
@@ -50,63 +122,75 @@ const useInView = (options: IntersectionObserverInit) => {
 const App: React.FC = () => {
   const [data, setData] = useState<PortfolioData | null>(null);
   const [loading, setLoading] = useState(true);
+
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     if (typeof window !== 'undefined' && window.localStorage) {
       const storedTheme = window.localStorage.getItem('theme');
-      if (storedTheme === 'light' || storedTheme === 'dark') {
-        return storedTheme;
-      }
+      return storedTheme === 'dark' ? 'dark' : 'light';
     }
-    return 'dark';
+    return 'light';
   });
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  
+  const [themeConfig, setThemeConfig] = useState<ThemeConfig | null>(null);
+  const [isThemeCustomizerOpen, setIsThemeCustomizerOpen] = useState(false);
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
-  // Fetch data and inject CSS variables from themeConfig
+  const [vantaEffect, setVantaEffect] = useState<VantaEffect>(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return (localStorage.getItem('vantaEffect') as VantaEffect) || 'FOG';
+    }
+    return 'FOG';
+  });
+
   useEffect(() => {
     fetch('/portfolio-data.json')
       .then(res => res.json())
       .then(jsonData => {
-        setData(jsonData as PortfolioData);
+        const portfolioData = jsonData as PortfolioData;
+        setData(portfolioData);
 
-        const { themeConfig } = jsonData as PortfolioData;
+        const savedThemeConfigStr = localStorage.getItem('portfolio_theme_config');
         
-        const createCssVariables = (themeObject: ThemeColors) => {
-            return Object.entries(themeObject)
-                .map(([key, value]) => {
-                    const cssVarName = key.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
-                    if (key.startsWith('vanta')) return ''; // Filter out vanta-specific keys
-                    return `    --${cssVarName}: ${value};`;
-                })
-                .filter(Boolean)
-                .join('\n');
-        };
-
-        const darkVars = createCssVariables(themeConfig.dark);
-        const lightVars = createCssVariables(themeConfig.light);
-        
-        const styleSheetContent = `
-:root {
-${darkVars}
-}
-
-html.light {
-${lightVars}
-}
-        `.trim();
-        
-        let styleElement = document.getElementById('dynamic-theme-styles');
-        if (!styleElement) {
-            styleElement = document.createElement('style');
-            styleElement.id = 'dynamic-theme-styles';
-            document.head.appendChild(styleElement);
-        }
-        styleElement.innerHTML = styleSheetContent;
+        setThemeConfig(savedThemeConfigStr ? JSON.parse(savedThemeConfigStr) : portfolioData.themeConfig);
       })
       .catch(err => console.error("Failed to load portfolio data:", err))
       .finally(() => setLoading(false));
   }, []);
 
-  // Manage 'light' class on html element and persist theme choice
+  useEffect(() => {
+    if (!themeConfig) return;
+
+    const createCssVariables = (themeObject: ThemeColors) => {
+      return Object.entries(themeObject)
+        .map(([key, value]) => {
+          const cssVarName = key.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
+          return `    --${cssVarName}: ${value};`;
+        })
+        .join('\n');
+    };
+
+    const darkVars = createCssVariables(themeConfig.dark);
+    const lightVars = createCssVariables(themeConfig.light);
+
+    const styleSheetContent = `
+:root {
+${darkVars}
+}
+html.light {
+${lightVars}
+}
+    `.trim();
+
+    let styleElement = document.getElementById('dynamic-theme-styles');
+    if (!styleElement) {
+      styleElement = document.createElement('style');
+      styleElement.id = 'dynamic-theme-styles';
+      document.head.appendChild(styleElement);
+    }
+    styleElement.innerHTML = styleSheetContent;
+  }, [themeConfig]);
+
+
   useEffect(() => {
     if (theme === 'light') {
       document.documentElement.classList.add('light');
@@ -115,45 +199,48 @@ ${lightVars}
     }
     localStorage.setItem('theme', theme);
   }, [theme]);
-
-  // Manage Vanta.js background animation
+  
   useEffect(() => {
-    if (window.VANTA && data) {
-      if (vantaEffect) {
-        vantaEffect.destroy();
-      }
-
-      const currentThemeConfig = theme === 'light' ? data.themeConfig.light : data.themeConfig.dark;
-      
-      const newVantaEffect = window.VANTA.NET({
-        el: "#bg-animation",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: parseInt(currentThemeConfig.vantaColor, 16),
-        backgroundColor: parseInt(currentThemeConfig.vantaBgColor, 16),
-        points: 10.00,
-        maxDistance: 22.00,
-        spacing: 16.00
-      });
-
-      setVantaEffect(newVantaEffect);
-    }
-    
-    return () => {
-      if (vantaEffect) {
-        vantaEffect.destroy();
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [theme, data]);
+    localStorage.setItem('vantaEffect', vantaEffect);
+  }, [vantaEffect]);
 
   const toggleTheme = () => {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  const handleThemeChange = (mode: 'light' | 'dark', key: keyof ThemeColors, value: string) => {
+    setThemeConfig(currentConfig => {
+        if (!currentConfig) return null;
+
+        const oldModeColors = currentConfig[mode];
+        const newModeColors = { ...oldModeColors, [key]: value };
+
+        let finalModeColors: ThemeColors;
+        const isBaseColorChange = key === 'bgColor' || key === 'textPrimary' || key === 'accentColor';
+
+        if (isBaseColorChange) {
+            const derived = generateDerivedColors(mode, newModeColors);
+            if (oldModeColors.vantaBgColor === oldModeColors.bgColor) {
+                derived.vantaBgColor = derived.bgColor;
+            }
+            if (oldModeColors.vantaColor === oldModeColors.accentColor) {
+                derived.vantaColor = derived.accentColor;
+            }
+            finalModeColors = derived;
+        } else {
+            finalModeColors = newModeColors;
+        }
+
+        const newConfig = { ...currentConfig, [mode]: finalModeColors };
+        localStorage.setItem('portfolio_theme_config', JSON.stringify(newConfig));
+        return newConfig;
+    });
+  };
+
+  const handleResetTheme = () => {
+    if (!data) return;
+    setThemeConfig(data.themeConfig);
+    localStorage.removeItem('portfolio_theme_config');
   };
 
   const [aboutRef, aboutInView] = useInView({ threshold: 0.1 });
@@ -163,12 +250,8 @@ ${lightVars}
   const [certsRef, certsInView] = useInView({ threshold: 0.1 });
   const [contactRef, contactInView] = useInView({ threshold: 0.1 });
 
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center text-xl text-slate-400">Loading Portfolio...</div>;
-  }
-
-  if (!data) {
-    return <div className="min-h-screen flex items-center justify-center text-xl text-red-500">Error: Portfolio data could not be loaded.</div>;
+  if (loading || !data || !themeConfig) {
+    return <div className="min-h-screen flex items-center justify-center text-xl text-slate-400 bg-main">Loading Portfolio...</div>;
   }
   
   const navLinks = [
@@ -182,8 +265,33 @@ ${lightVars}
 
   return (
     <>
+      <BackgroundAnimation 
+        theme={theme}
+        themeConfig={themeConfig}
+        vantaEffect={vantaEffect}
+      />
+      <ThemeCustomizer 
+        isOpen={isThemeCustomizerOpen}
+        onClose={() => setIsThemeCustomizerOpen(false)}
+        themeConfig={themeConfig}
+        onThemeChange={handleThemeChange}
+        onReset={handleResetTheme}
+        currentVantaEffect={vantaEffect}
+        onVantaEffectChange={setVantaEffect}
+      />
+       <Chatbot 
+          isOpen={isChatbotOpen}
+          onClose={() => setIsChatbotOpen(false)}
+          portfolioData={data}
+        />
       <div className="relative z-10">
-        <Navbar name={data.personalInfo.name} links={navLinks} theme={theme} toggleTheme={toggleTheme} />
+        <Navbar 
+          name={data.personalInfo.name} 
+          links={navLinks} 
+          theme={theme} 
+          toggleTheme={toggleTheme} 
+          onToggleThemeCustomizer={() => setIsThemeCustomizerOpen(true)}
+        />
         <main className="container mx-auto px-6 md:px-12">
           <Hero personalInfo={data.personalInfo} />
 
@@ -213,6 +321,13 @@ ${lightVars}
         </main>
         <Footer contact={data.personalInfo.contact} name={data.personalInfo.name} />
       </div>
+      <button
+          onClick={() => setIsChatbotOpen(true)}
+          className={`fixed bottom-6 right-6 bg-accent text-white p-4 rounded-full shadow-lg hover:bg-accent-brighter transition-all transform duration-300 z-50 ${isChatbotOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
+          aria-label="Open AI assistant"
+      >
+          <SparklesIcon className="w-6 h-6" />
+      </button>
     </>
   );
 };

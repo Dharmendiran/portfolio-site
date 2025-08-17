@@ -43,6 +43,23 @@ export interface Project {
   liveUrl?: string;
 }
 
+export type VantaEffect =
+  | 'NONE'
+  | 'NET'
+  | 'WAVES'
+  | 'DOTS'
+  | 'FOG'
+  | 'CLOUDS'
+  | 'CLOUDS2'
+  | 'GLOBE'
+  | 'BIRDS'
+  | 'CELLS'
+  | 'TRUNK'
+  | 'TOPOLOGY'
+  | 'HALO'
+  | 'RINGS'
+  | 'RIPPLE';
+
 export interface ThemeColors {
   bgColor: string;
   textPrimary: string;
@@ -77,4 +94,9 @@ export interface PortfolioData {
   projects: Project[];
   certifications: CertificationItem[];
   themeConfig: ThemeConfig;
+}
+
+export interface ChatMessage {
+  role: 'user' | 'model';
+  content: string;
 }
