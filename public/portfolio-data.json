@@ -29,7 +29,7 @@
         "Wrote and optimized SQL queries for database validation as part of end-to-end testing.",
         "Automated AWS services using Boto3, including Lambda, S3, and Redshift, for cloud-based test automation.",
         "Worked in Agile environments following Scrum methodologies, and used JIRA, Zephyr, and Confluence for test management, reporting, and documentation.",
-        "Developed a GenAI-powered BDD Test Scenario Generator that integrates Confluence design documents with Amazon Bedrock Knowledge Bases, leveraging foundation models to auto-generate Gherkin-style test scenarios for improved test coverage and efficiency."
+        "Developed a GenAI-powered BDD Test Scenario Generator that leverages foundation models to automatically generate Gherkin-style test scenarios from user stories and feature descriptions, improving test coverage, collaboration, and efficiency."
       ]
     }
   ],
@@ -69,23 +69,31 @@
   ],
   "projects": [
     {
+      "title": "AI Language Translator",
+      "description": "A modern, AI-powered language translator that allows users to translate text, voice, and images between various languages. Built with React and TypeScript, this application leverages the Google Gemini API for fast and accurate translations. Key features include real-time text translation, speech-to-text input, and image-based text extraction for a seamless multilingual experience.",
+      "tags": ["GenAI", "React", "TypeScript", "Google Gemini API"],
+      "repoUrl": "https://github.com/Dharmendiran",
+      "liveUrl": "https://dharma-ai-translator.vercel.app"
+    },
+    {
       "title": "GenAI BDD Test Scenario Generator",
-      "description": "Creator of a GenAI-powered tool that integrates Confluence design documents with Amazon Bedrock to auto-generate Gherkin-style BDD test scenarios, significantly improving test coverage and efficiency.",
-      "tags": ["GenAI", "Amazon Bedrock", "Python", "Boto3", "Confluence API"],
-      "repoUrl": "https://github.com/Dharmendiran"
+      "description": "A web-based tool that leverages AI to automatically generate Behavior-Driven Development (BDD) test scenarios in Gherkin format. By entering user stories or feature descriptions, users receive well-structured Given–When–Then scenarios that are ready for implementation in automated testing frameworks. The tool streamlines collaboration between business analysts, developers, and QA engineers by reducing manual effort, ensuring clarity, and accelerating the test automation lifecycle.",
+      "tags": ["GenAI", "React", "TypeScript", "Google Gemini API"],
+      "repoUrl": "https://github.com/Dharmendiran/bdd-test-scenario-generator.git",
+      "liveUrl": "https://bdd-test-scenario-generator.vercel.app/"
+    },
+    {
+      "title": "AI SQL Formatter & Corrector",
+      "description": "An intelligent tool that leverages the Google Gemini API to automatically format and correct your SQL queries. It not only beautifies your code for better readability but also identifies and fixes common errors, providing clear explanations for every change. This helps developers write cleaner, more efficient, and error-free SQL with ease.",
+      "tags": ["GenAI", "React", "SQL", "Google Gemini API", "Code Formatter"],
+      "repoUrl": "https://github.com/Dharmendiran",
+      "liveUrl": "https://ai-sql-formatter.vercel.app"
     },
     {
       "title": "E-Commerce Test Automation Framework",
       "description": "Developed a comprehensive UI and API test automation framework using Python, Selenium, and Pytest for a high-traffic e-commerce platform. Integrated with Jenkins for nightly regression runs.",
       "tags": ["Python", "Selenium", "Pytest", "Jenkins", "Allure Reports"],
       "repoUrl": "https://github.com/Dharmendiran"
-    },
-    {
-      "title": "SaaS Application End-to-End Testing",
-      "description": "Led the implementation of an end-to-end testing suite for a complex SaaS product using Cypress. Focused on critical user workflows and cross-browser compatibility, reducing bug leakage by 40%.",
-      "tags": ["Cypress", "TypeScript", "CI/CD", "GitHub Actions"],
-      "repoUrl": "https://github.com/Dharmendiran",
-      "liveUrl": "#"
     }
   ],
   "certifications": [
@@ -96,46 +104,46 @@
       "url": "https://learn.microsoft.com/api/credentials/share/en-in/DharmendiranE-4969/735342FB7A11722?sharingId=E5DE9BD11DC499A4"
     }
   ],
-  "themeConfig": {
-    "dark": {
-      "bgColor": "#020617",
-      "textPrimary": "#E2E8F0",
-      "textSecondary": "#94A3B8",
-      "textTitle": "#F8FAFC",
-      "borderColor": "#1E293B",
-      "cardBg": "rgba(15, 23, 42, 0.6)",
-      "cardBgHover": "rgba(30, 41, 59, 0.8)",
-      "accentColor": "#22D3EE",
-      "accentColorTranslucent": "rgba(34, 211, 238, 0.5)",
-      "accentGlow": "0 0 12px rgba(34, 211, 238, 0.4), 0 0 28px rgba(34, 211, 238, 0.2)",
-      "accentShadow": "0 4px 14px 0 rgba(34, 211, 238, 0.15)",
-      "accentHoverBg": "rgba(34, 211, 238, 0.1)",
-      "scrollbarTrack": "#1E293B",
-      "scrollbarThumb": "#475569",
-      "scrollbarThumbHover": "#64748b",
-      "headerBg": "rgba(2, 6, 23, 0.75)",
-      "vantaColor": "0x22d3ee",
-      "vantaBgColor": "0x020617"
-    },
-    "light": {
-      "bgColor": "#F8FAFC",
-      "textPrimary": "#334155",
-      "textSecondary": "#64748B",
-      "textTitle": "#0F172A",
-      "borderColor": "#E2E8F0",
-      "cardBg": "#FFFFFF",
-      "cardBgHover": "#FFFFFF",
-      "accentColor": "#0891B2",
-      "accentColorTranslucent": "rgba(8, 145, 178, 0.5)",
-      "accentGlow": "0 0 10px rgba(8, 145, 178, 0.2)",
-      "accentShadow": "0 4px 14px 0 rgba(8, 145, 178, 0.15)",
-      "accentHoverBg": "rgba(8, 145, 178, 0.1)",
-      "scrollbarTrack": "#E2E8F0",
-      "scrollbarThumb": "#CBD5E1",
-      "scrollbarThumbHover": "#94A3B8",
-      "headerBg": "rgba(248, 250, 252, 0.75)",
-      "vantaColor": "0x0891b2",
-      "vantaBgColor": "0xf8fafc"
-    }
+"themeConfig": {
+  "dark": {
+    "bgColor": "#0B0F19",
+    "textPrimary": "#F9FAFB",
+    "textSecondary": "#CBD5E1",
+    "textTitle": "#FFFFFF",
+    "borderColor": "#1E293B",
+    "cardBg": "rgba(24, 33, 51, 0.95)",
+    "cardBgHover": "rgba(39, 54, 77, 0.95)",
+    "accentColor": "#38BDF8",
+    "accentColorTranslucent": "rgba(56, 189, 248, 0.5)",
+    "accentGlow": "0 0 18px rgba(56, 189, 248, 0.5)",
+    "accentShadow": "0 4px 20px rgba(56, 189, 248, 0.25)",
+    "accentHoverBg": "rgba(56, 189, 248, 0.15)",
+    "scrollbarTrack": "#1E293B",
+    "scrollbarThumb": "#475569",
+    "scrollbarThumbHover": "#94A3B8",
+    "headerBg": "rgba(11, 15, 25, 0.95)",
+    "vantaColor": "0x38bdf8",
+    "vantaBgColor": "0x0b0f19"
+  },
+  "light": {
+    "bgColor": "#FFFFFF",
+    "textPrimary": "#0F172A",
+    "textSecondary": "#475569",
+    "textTitle": "#0F172A",
+    "borderColor": "#E2E8F0",
+    "cardBg": "#FFFFFF",
+    "cardBgHover": "#F8FAFC",
+    "accentColor": "#2563EB",
+    "accentColorTranslucent": "rgba(37, 99, 235, 0.5)",
+    "accentGlow": "0 0 14px rgba(37, 99, 235, 0.35)",
+    "accentShadow": "0 4px 16px rgba(37, 99, 235, 0.2)",
+    "accentHoverBg": "rgba(37, 99, 235, 0.12)",
+    "scrollbarTrack": "#E5E7EB",
+    "scrollbarThumb": "#94A3B8",
+    "scrollbarThumbHover": "#64748B",
+    "headerBg": "rgba(255, 255, 255, 0.9)",
+    "vantaColor": "0x2563eb",
+    "vantaBgColor": "0xffffff"
   }
+}
 }
