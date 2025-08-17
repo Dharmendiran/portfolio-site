@@ -11,7 +11,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ name, contact }) => {
   return (
-    <footer className="bg-main border-t border-main mt-20">
+    <footer className="border-t border-main mt-20">
       <div className="container mx-auto py-6 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between">
         <p className="text-slate-500 text-sm mb-4 md:mb-0">
           © {new Date().getFullYear()} {name}. All Rights Reserved.
