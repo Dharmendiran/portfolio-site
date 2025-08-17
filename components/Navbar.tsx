@@ -1,5 +1,9 @@
+
+
 import React, { useState, useEffect } from 'react';
-import { SunIcon, MoonIcon } from './Icons';
+import { 
+  SunIcon, MoonIcon, PaintBrushIcon
+} from './Icons';
 
 interface NavLink {
   name: string;
@@ -11,9 +15,10 @@ interface NavbarProps {
   links: NavLink[];
   theme: 'dark' | 'light';
   toggleTheme: () => void;
+  onToggleThemeCustomizer: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ name, links, theme, toggleTheme }) => {
+const Navbar: React.FC<NavbarProps> = ({ name, links, theme, toggleTheme, onToggleThemeCustomizer }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -26,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ name, links, theme, toggleTheme }) => {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled || isMenuOpen ? 'bg-header backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
+    <header className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled || isMenuOpen ? 'bg-header backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
       <nav className="container mx-auto flex items-center justify-between p-4 px-6 md:px-12">
         <a href="#home" className="text-2xl font-bold text-title-color tracking-wider">
           {name}
@@ -42,11 +47,14 @@ const Navbar: React.FC<NavbarProps> = ({ name, links, theme, toggleTheme }) => {
             </a>
           ))}
         </div>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
           <button onClick={toggleTheme} aria-label="Toggle theme" className="p-2 rounded-full text-primary-color hover:text-accent hover:bg-card-hover transition-colors duration-300">
             {theme === 'light' ? <MoonIcon className="w-6 h-6" /> : <SunIcon className="w-6 h-6" />}
           </button>
-          <a href="#contact" className="hidden md:inline-block px-4 py-2 text-accent border border-accent rounded-md hover:bg-accent-hover transition-all duration-300">
+           <button onClick={onToggleThemeCustomizer} aria-label="Customize appearance" className="p-2 rounded-full text-primary-color hover:text-accent hover:bg-card-hover transition-colors duration-300">
+            <PaintBrushIcon className="w-6 h-6" />
+          </button>
+          <a href="#contact" className="hidden md:inline-block ml-2 px-4 py-2 text-accent border border-accent rounded-md hover:bg-accent-hover transition-all duration-300">
             Get In Touch
           </a>
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 rounded-md text-primary-color hover:text-accent focus:outline-none">
