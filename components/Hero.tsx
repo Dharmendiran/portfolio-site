@@ -27,16 +27,18 @@ const Hero: React.FC<HeroProps> = ({ personalInfo }) => {
           >
             View My Work
           </a>
-           <a
-            href="/Dharmendiran_E_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            download
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-card text-primary-color font-semibold rounded-lg hover:bg-card-hover transition-all duration-300"
-          >
-            <DownloadIcon className="w-5 h-5 mr-2 -ml-1" />
-            Download CV
-          </a>
+          {personalInfo.resume && (
+             <a
+              href={personalInfo.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Dharmendiran_E_Resume.pdf"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-card text-primary-color font-semibold rounded-lg hover:bg-card-hover transition-all duration-300"
+            >
+              <DownloadIcon className="w-5 h-5 mr-2 -ml-1" />
+              Download CV
+            </a>
+          )}
           <a
             href="#contact"
             className="w-full sm:w-auto px-8 py-3 text-center bg-card text-primary-color font-semibold rounded-lg hover:bg-card-hover transition-all duration-300"
