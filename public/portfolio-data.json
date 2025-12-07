@@ -1,7 +1,7 @@
 {
   "personalInfo": {
     "name": "Dharmendiran E",
-    "title": "Automation & QA Engineer",
+    "title": "Automation Engineer (SDET)",
     "bio": "Crafting robust and scalable automation frameworks to ensure software quality and accelerate development cycles. Passionate about building reliable tests and streamlining CI/CD pipelines for faster, more efficient releases.",
     "headshot": "/headshot.jpg",
     "contact": {
@@ -11,9 +11,10 @@
     }
   },
   "about": [
-    "Hello! I'm Dharmendiran E – an experienced Automation Engineer with 3 years of hands-on expertise in building scalable automation solutions for web, mobile, and API testing. I specialize in Python, Selenium, Robot Framework, Appium, and BDD practices using Gherkin and Cucumber.",
-    "I’m skilled in integrating automation into CI/CD pipelines using Jenkins, performing API testing with Postman, and using SQL for backend validation. I also have practical experience automating AWS services using Boto3, including Lambda, S3, and Redshift.",
-    "With a strong foundation in Agile Scrum methodologies, I collaborate effectively using tools like JIRA, Zephyr, and Confluence. I'm also the creator of a GenAI-powered BDD Test Scenario Generator that integrates Confluence design docs with Amazon Bedrock—accelerating test creation and improving alignment with business needs."
+    "Hello! I'm Dharmendiran E – Automation Engineer (SDET) with 3.6 years of experience in designing and developing scalable test automation frameworks, AI-driven QA accelerators, and cloud-based testing solutions.",
+    "Skilled in Python, Selenium WebDriver, Robot Framework, BDD (Cucumber), REST API testing, SQL, Jenkins, CI/CD, and AWS automation (Boto3).",
+    "Hands-on expertise in deploying ML models using AWS SageMaker, building GenAI-powered test scenario generators, and automating cloud infrastructure for QA workflows.",
+    "Proven track record of reducing manual testing effort, increasing automation coverage, and expediting release cycles in Agile Scrum environments."
   ],
   "experience": [
     {
@@ -21,49 +22,111 @@
       "company": "Tata Consultancy Services",
       "period": "Jul 2022 - Present",
       "description": [
-        "Developed and maintained automation test scripts using Python, Selenium, and Robot Framework.",
-        "Automated Android application testing using Appium to ensure smooth mobile app performance.",
-        "Designed and implemented BDD test cases using Gherkin and Cucumber for better collaboration and clarity.",
-        "Developed and integrated test automation scripts into Jenkins CI/CD pipelines for continuous testing and deployment.",
-        "Conducted API testing using Postman, validating request-response structures, status codes, and performance.",
-        "Wrote and optimized SQL queries for database validation as part of end-to-end testing.",
-        "Automated AWS services using Boto3, including Lambda, S3, and Redshift, for cloud-based test automation.",
-        "Worked in Agile environments following Scrum methodologies, and used JIRA, Zephyr, and Confluence for test management, reporting, and documentation.",
-        "Developed a GenAI-powered BDD Test Scenario Generator that leverages foundation models to automatically generate Gherkin-style test scenarios from user stories and feature descriptions, improving test coverage, collaboration, and efficiency."
+        "Developed and maintained end-to-end automation test scripts using Python, Selenium WebDriver, and Robot Framework, increasing regression test efficiency by 30% and enhancing release stability.",
+        "Designed and executed BDD test cases using Gherkin and Cucumber, improving requirement-to-test traceability and collaboration across QA, development, and product teams.",
+        "Deployed machine learning models using AWS SageMaker, automating ML operational pipelines and reducing manual intervention by 70% to improve model refresh and monitoring workflows.",
+        "Integrated automated test suites into Jenkins CI/CD pipelines, enabling continuous testing, reducing manual execution effort by 40%, and accelerating deployment cycles.",
+        "Performed REST API testing using Postman and validated backend data using SQL queries, improving API reliability, data consistency, and system quality across multiple environments.",
+        "Automated core AWS services using Python (Boto3) — including Lambda, S3, RDS, Glue, and Redshift — to streamline test environment provisioning, data generation, and workflow orchestration.",
+        "Built a GenAI-powered BDD Test Scenario Generator leveraging Confluence documents to automatically create functional and regression test scenarios, reducing test design time by 60%.",
+        "Developed QueryStudio AI, a browser-based Text-to-SQL simulation engine that interprets schemas, generates SQL queries, and produces realistic mock data with zero backend dependency, significantly speeding up prototyping and validation.",
+        "Collaborated in Agile Scrum environments using JIRA, Zephyr, and Confluence for sprint planning, user story refinement, test management, and release documentation to ensure quality delivery."
       ]
     }
   ],
   "skills": [
     {
-      "title": "Languages & Databases",
+      "title": "Programming & Scripting",
       "skills": [
         { "name": "Python" },
+        { "name": "Core Java" },
         { "name": "JavaScript" },
-        { "name": "SQL" },
-        { "name": "Java" }
+        { "name": "Boto3" },
+        { "name": "SQL" }
       ]
     },
     {
-      "title": "Automation Frameworks & Libraries",
+      "title": "Cloud & DevOps",
       "skills": [
-        { "name": "Selenium" },
-        { "name": "Robot Framework" },
-        { "name": "Appium" },
-        { "name": "Cypress" },
-        { "name": "Playwright" },
-        { "name": "Pytest" },
-        { "name": "Boto3" }
-      ]
-    },
-    {
-      "title": "Tools, CI/CD & Cloud",
-      "skills": [
-        { "name": "Docker" },
+        { "name": "AWS Lambda" },
+        { "name": "AWS S3" },
+        { "name": "AWS RDS" },
+        { "name": "AWS Redshift" },
+        { "name": "AWS Glue" },
+        { "name": "AWS SageMaker" },
+        { "name": "AWS EC2" },
+        { "name": "AWS IAM" },
+        { "name": "AWS Step Functions" },
+        { "name": "AWS SQS" },
         { "name": "Jenkins" },
+        { "name": "CI/CD Pipeline Integration" },
+        { "name": "CloudFormation" }
+      ]
+    },
+    {
+      "title": "AI & Machine Learning",
+      "skills": [
+        { "name": "GenAI" },
+        { "name": "LLMs (ChatGPT, Gemini, Claude)" },
+        { "name": "Amazon Bedrock" },
+        { "name": "RAG Pipelines" },
+        { "name": "AWS SageMaker" },
+        { "name": "Prompt Engineering" }
+      ]
+    },
+    {
+      "title": "Version Control & Collaboration",
+      "skills": [
         { "name": "Git" },
-        { "name": "AWS" },
+        { "name": "GitHub" },
+        { "name": "Confluence" },
+        { "name": "JIRA" },
+        { "name": "Zephyr" }
+      ]
+    },
+    {
+      "title": "Test Automation Tools",
+      "skills": [
+        { "name": "Selenium WebDriver" },
+        { "name": "Robot Framework" },
+        { "name": "Cucumber (BDD)" },
+        { "name": "PyTest" },
         { "name": "Postman" },
-        { "name": "JIRA" }
+        { "name": "JMeter" }
+      ]
+    },
+    {
+      "title": "API & Database Testing",
+      "skills": [
+        { "name": "REST API Automation" },
+        { "name": "Postman Collections" },
+        { "name": "JSON/XML Validation" },
+        { "name": "SQL Queries" },
+        { "name": "Data Validation" }
+      ]
+    },
+    {
+      "title": "Test Methods & QA Practices",
+      "skills": [
+        { "name": "Functional Testing" },
+        { "name": "Regression Testing" },
+        { "name": "BDD" },
+        { "name": "TDD" },
+        { "name": "End-to-End Testing" },
+        { "name": "Smoke/Sanity Testing" },
+        { "name": "Data-Driven Testing" },
+        { "name": "Agile Scrum" }
+      ]
+    },
+    {
+      "title": "Methodologies & IDEs",
+      "skills": [
+        { "name": "JIRA" },
+        { "name": "Zephyr" },
+        { "name": "Confluence" },
+        { "name": "VS Code" },
+        { "name": "PyCharm" },
+        { "name": "Curser" }
       ]
     }
   ],
